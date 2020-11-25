@@ -1,6 +1,10 @@
 require("dotenv").config();
 const port = process.env.PORT || 8080;
 
+//routes and DB functions
+const apiRoutes = require("./routes/apiRoutes");
+const apiDB = require("./database/dbFunctions");
+
 //server setup & modules import
 const express = require("express");
 const APP = express();
@@ -20,7 +24,7 @@ APP.listen(port, (err) =>
 );
 
 // ENDPOINTS ==========================================================
-
-APP.get("/test", (req, res) => {
-  res.send("DDD");
-});
+// ('api/endpoint')
+const apiRouter = express.Router();
+apiRoutes(apiRouter, apiDB);
+APP.use("/api", apiRouter);
