@@ -1,0 +1,11 @@
+{
+  "name": "wet_bat",
+  "version": "1.0.0",
+  "description": "Full-stack prototype based application  - quote generator",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
