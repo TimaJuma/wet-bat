@@ -56,8 +56,10 @@ CREATE TABLE quotations
     destination INTEGER REFERENCES cities(id) ON DELETE CASCADE,
     depart_date DATE NOT NULL,
     return_date DATE NOT NULL,
+    passenger_id INTEGER REFERENCES passengers(id) ON DELETE CASCADE,
+    transport_id INTEGER REFERENCES transportations(id) ON DELETE CASCADE,
     price INTEGER NOT NULL,
-    currency_type INTEGER REFERENCES currency(id) ON DELETE CASCADE,
+    currency_id INTEGER REFERENCES currency(id) ON DELETE CASCADE,
     is_order BOOLEAN NOT NULL DEFAULT FALSE
 );
 

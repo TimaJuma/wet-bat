@@ -9,7 +9,7 @@ exports.test = test;
 
 const getAllQuotes = async () => {
   try {
-    const res = await db.query(`SELECT * FROM passengers`);
+    const res = await db.query(`SELECT * FROM quotations`);
     console.log("res", res.rows);
     return res.rows;
   } catch (err) {
