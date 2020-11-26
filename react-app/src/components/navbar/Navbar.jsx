@@ -32,7 +32,7 @@ const Navbar = () => {
 //     });
 //   }, []);
   return (
-    <nav>
+    <nav className="nav">
       {/* <div>
         <Link className="navigation-logo" to="/">
         </Link>

@@ -20,12 +20,12 @@ const QuoteFormikField =
                 shrink: true,
               }}
             >
-              {ranges.map((option) => (
+              {/* {ranges.map((option) => (
                 <MenuItem key={option.id} value={option.id}>
                   {option.first_name && `${option.first_name} ${option.last_name}`}
                   {option.city && `(${option.code}) ${option.city}`}
                 </MenuItem>
-              ))}
+              ))} */}
             </Field>
       </div>
     );

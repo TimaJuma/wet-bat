@@ -3,56 +3,35 @@ import { makeStyles, createStyles } from "@material-ui/core/styles";
 
 import List from "@material-ui/core/List";
 
-import IconDashboard from "@material-ui/icons/Dashboard";
-import IconShoppingCart from "@material-ui/icons/ShoppingCart";
-import IconPeople from "@material-ui/icons/People";
-import IconBarChart from "@material-ui/icons/BarChart";
-import IconLibraryBooks from "@material-ui/icons/LibraryBooks";
-import AddCircleIcon from "@material-ui/icons/AddCircle";
+import HomeIcon from "@material-ui/icons/Home";
+import MoneyIcon from "@material-ui/icons/AttachMoney";
+import ListIcon from "@material-ui/icons/List";
+import TelegramIcon from "@material-ui/icons/Telegram";
+
 
 import SideMenuItem from "./SideMenuItem";
 
-const appMenuItems = [
+const sideMenuItems = [
   {
-    name: "Dashboard",
+    name: "Home",
     link: "/",
-    Icon: IconDashboard,
+    Icon: HomeIcon,
   },
   {
-    name: "Add client",
-    link: "/addclient",
-    Icon: AddCircleIcon,
+    name: "Quotes",
+    link: "/quotes",
+    Icon: MoneyIcon,
   },
   {
-    name: "Clients",
+    name: "Leads",
     link: "/clients",
-    Icon: IconPeople,
+    Icon: ListIcon,
   },
   {
-    name: "Reports",
+    name: "Tours",
     link: "/reports",
-    Icon: IconBarChart,
-  },
-  {
-    name: "Nested Pages",
-    Icon: IconLibraryBooks,
-    items: [
-      {
-        name: "Level 2",
-      },
-      {
-        name: "Level 2",
-        items: [
-          {
-            name: "Level 3",
-          },
-          {
-            name: "Level 3",
-          },
-        ],
-      },
-    ],
-  },
+    Icon: TelegramIcon,
+  }
 ];
 
 const SideMenu = () => {
@@ -60,8 +39,8 @@ const SideMenu = () => {
 
   return (
     <List component="nav" className={classes.appMenu} disablePadding>
-      {/* <AppMenuItem {...appMenuItems[0]} /> */}
-      {appMenuItems.map((item, index) => (
+      <SideMenuItem {...SideMenuItem[0]} />
+      {sideMenuItems.map((item, index) => (
         <SideMenuItem {...item} key={index} />
       ))}
     </List>

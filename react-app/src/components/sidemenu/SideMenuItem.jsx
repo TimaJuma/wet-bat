@@ -1,7 +1,6 @@
 import React from "react";
-// import PropTypes from "prop-types";
+
 import { makeStyles, createStyles } from "@material-ui/core/styles";
-// import { SvgIconProps } from '@material-ui/core/SvgIcon'
 
 import List from "@material-ui/core/List";
 
@@ -15,23 +14,6 @@ import IconExpandMore from "@material-ui/icons/ExpandMore";
 
 import SideMenuItemComponent from "./SideMenuComponent";
 
-// React runtime PropTypes
-// export const AppMenuItemPropTypes = {
-//   name: PropTypes.string.isRequired,
-//   link: PropTypes.string,
-//   Icon: PropTypes.elementType,
-//   items: PropTypes.array,
-// };
-
-// // TypeScript compile-time props type, infered from propTypes
-// // https://dev.to/busypeoples/notes-on-typescript-inferring-react-proptypes-1g88
-// type AppMenuItemPropTypes = PropTypes.InferProps<typeof AppMenuItemPropTypes>;
-// type AppMenuItemPropsWithoutItems = Omit<AppMenuItemPropTypes, "items">;
-
-// // Improve child items declaration
-// export type AppMenuItemProps = AppMenuItemPropsWithoutItems & {
-//   items?: AppMenuItemProps[];
-// };
 
 const SideMenuItem = (props) => {
   const { name, link, Icon, items = [] } = props;
@@ -52,7 +34,7 @@ const SideMenuItem = (props) => {
       {/* Display an icon if any */}
       {!!Icon && (
         <ListItemIcon className={classes.menuItemIcon}>
-          <Icon />
+          <Icon fontSize="large"/>
         </ListItemIcon>
       )}
       <ListItemText primary={name} inset={!Icon} />
@@ -92,7 +74,7 @@ const useStyles = makeStyles((theme) =>
       },
     },
     menuItemIcon: {
-      color: "#97c05c",
+      color: "#5f6caf",
     },
   })
 );

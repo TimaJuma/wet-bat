@@ -7,19 +7,14 @@ import Drawer from "@material-ui/core/Drawer";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 
+import "./SideMenuBar.scss"
+
 import SideMenu from "./SideMenu";
 
+import HomePage from "../main/home/HomePage"
+import QuotesPage from "../main/quotes/QuotesPage"
 
-const PageDashboard = () => (
-  <Typography variant="h3" component="h1">
-    {/* <Login /> */} HOME
-  </Typography>
-);
-const PageOrders = () => (
-  <Typography variant="h3" component="h1">
-    Page to Add Clients
-  </Typography>
-);
+
 const PageClients = () => (
   <Typography variant="h3" component="h1">
     List of customers
@@ -27,7 +22,7 @@ const PageClients = () => (
 );
 const PageReports = () => (
   <Typography variant="h3" component="h1">
-    Reports Page
+    List of Tours
   </Typography>
 );
 
@@ -37,6 +32,7 @@ const SideMenuBar = () => {
   return (
     <BrowserRouter>
       <div className={clsx("App", classes.root)}>
+      {/* <div className="sidebar-container"> */}
         <CssBaseline />
         <Drawer
           variant="permanent"
@@ -46,11 +42,11 @@ const SideMenuBar = () => {
         >
           <SideMenu />
         </Drawer>
-        <main className={classes.content}>
-          <Container maxWidth="lg" className={classes.container}>
+        <main className="main-content">
+          <Container maxWidth="lg" className="sidebar-container">
             <Switch>
-              <Route path="/" exact component={PageDashboard} />
-              <Route path="/addclient" component={PageOrders} />
+              <Route path="/" exact component={HomePage} />
+              <Route path="/quotes" component={QuotesPage} />
               <Route path="/clients" component={PageClients} />
               <Route path="/reports" component={PageReports} />
             </Switch>
@@ -61,7 +57,7 @@ const SideMenuBar = () => {
   );
 };
 
-const drawerWidth = 240;
+const drawerWidth = 250;
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -69,22 +65,25 @@ const useStyles = makeStyles((theme) => ({
   },
   drawerPaper: {
     position: "relative",
-    whiteSpace: "nowrap",
+    // display: "flex",
+    // flexDirection: "column",
+    // whiteSpace: "nowrap",
     width: drawerWidth,
-    paddingTop: theme.spacing(4),
-    paddingBottom: theme.spacing(4),
-    background: "#535454",
-    color: "#fff",
+    height : "100vh",
+    // paddingTop: theme.spacing(4),
+    // paddingBottom: theme.spacing(4),
+    background: "#e7f0c3",
+    color: "#5f6caf",
   },
-  content: {
-    flexGrow: 1,
-    height: "100vh",
-    overflow: "auto",
-  },
-  container: {
-    paddingTop: theme.spacing(4),
-    paddingBottom: theme.spacing(4),
-  },
+  // content: {
+  //   flexGrow: 1,
+  //   height: "100vh",
+  //   overflow: "auto",
+  // },
+  // container: {
+  //   paddingTop: theme.spacing(4),
+  //   paddingBottom: theme.spacing(4),
+  // },
 }));
 
 export default SideMenuBar;
