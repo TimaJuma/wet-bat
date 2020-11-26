@@ -9,5 +9,17 @@ module.exports = (router, db) => {
     }
   });
 
+  router.get("/quotedata", async (req, res) => {
+    try {
+      const passengerData = await db.getQuoteData();
+      const citiesData = await db.getAllCities();
+      console.log("quoteData", passengerData);
+      console.log("CityData", citiesData);
+      res.send({ passengerData, citiesData });
+    } catch (err) {
+      res.status(500).send({ error: `${err.message}` });
+    }
+  });
+
   return router;
 };

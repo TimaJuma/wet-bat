@@ -1,0 +1,41 @@
+@import "../../../../public/styles/variables.scss";
+
+.quote_create-container {
+  background-color: white;
+  border-radius: 15px;
+  height: 400px;
+  width: 40%;
+  border: 3px solid $wb-grey;
+  margin: 1rem;
+}
+
+// ==================================================
+.quote_create-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+
+  border-bottom: 3px solid $wb-grey;
+}
+
+.quote_create-header-icon {
+  color: $wb-blue;
+  //   margin: 1rem;
+}
+
+.quote_create-header-text {
+  color: $wb-violet;
+  //   display: inline;
+}
+
+.quote_create-header-btn {
+  color: $wb-grey;
+  float: right;
+}
+
+// ==================================================
+.quote_create-body {
+  border: 1px solid red;
+  height: auto;
+}

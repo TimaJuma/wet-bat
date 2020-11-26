@@ -3,7 +3,7 @@ import React from "react";
 // import './App.css';
 import HomePage from "./components/main/home/HomePage"
 import Navbar from "./components/navbar/Navbar"
-import QuotesView from "./components/main/quotes/QuotesView"
+import QuotesPage from "./components/main/quotes/QuotesPage"
 import SideMenuBar from "./components/sidemenu/SideMenuBar"
 
 
@@ -13,7 +13,7 @@ const App = () => {
     <Navbar/>
     {/* <SideMenuBar /> */}
     <HomePage/>
-    <QuotesView/>
+    <QuotesPage/>
     </>
   );
 }
