@@ -1,0 +1,33 @@
+@import "../../../../public/styles/variables.scss";
+
+.home-main_container {
+  margin: auto;
+  margin-top: 1rem;
+  height: 350px;
+  width: 90%;
+  border-radius: 15px;
+  background: linear-gradient(to right, $wb-blue, rgb(66, 109, 199));
+  display: flex;
+  justify-content: space-between;
+}
+
+.home-left_text {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  padding: 2rem;
+}
+
+.home-right_text {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  padding: 2rem;
+}
+
+.home-stats {
+  display: flex;
+  justify-content: space-evenly;
+}
