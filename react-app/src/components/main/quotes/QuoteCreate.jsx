@@ -1,27 +1,30 @@
 import React, {useLayoutEffect, useState} from 'react';
 import {Form, Formik} from "formik"
+import * as Yup from "yup";
 import QuoteSendBtn from "./quoteitems/QuoteSendBtn"
 import FastForwardIcon from "@material-ui/icons/FastForward"
 import IconButton from "@material-ui/core/IconButton"
-import OpenWith from "@material-ui/icons/OpenWith"
+import SettingsOverscan from "@material-ui/icons/SettingsOverscan"
 import QuoteFormikField from "./quoteitems/QuoteFormikField"
 import QuoteFormikSelect from "./quoteitems/QuoteFormikSelect"
 import "./QuoteCreate.scss"
 
 import axios from "axios"
 
-import {Paper, Table, TableBody,  TableContainer} from "@material-ui/core"
+import {Paper,  TableContainer} from "@material-ui/core"
 import { makeStyles, createStyles } from "@material-ui/core/styles";
 
-// import "./QuoteList.scss"
+
 
 const useStyles = makeStyles((theme) =>
   createStyles({
     tableFrame: {
         margin: "10px",
+        marginBottom: "30px",
         padding : "20px",
         width: "100%",
         minWidth : "400px",
+        height: "435px",
       borderRadius: "12px",
     },
     iconStyle: {
@@ -32,7 +35,7 @@ const useStyles = makeStyles((theme) =>
 
 
 
-const QuoteCreate = (quote) => {
+const QuoteCreate = ({setUpdateQuotes}) => {
     const classes = useStyles();
     const [quoteData, setQuoteData] = useState({});
     const [error, SetError] = useState({})
@@ -54,10 +57,21 @@ const QuoteCreate = (quote) => {
 
     const handleSubmit = (values) => {
         axios.post("/api/quote", values).then((res) => {
+        setUpdateQuotes(prev => prev +1 )
           console.log("response recieved");
         });
       };
 
+
+    // VALIDATION
+    const defaultRequiredMessage = "This is a required field";
+
+    const createQuoteValidator = Yup.object().shape({
+      first_name: Yup.string().required(defaultRequiredMessage),
+      last_name: Yup.string().required(defaultRequiredMessage),
+      phone: Yup.string().required(defaultRequiredMessage),
+      email: Yup.string().email().required(defaultRequiredMessage)
+    });
     // INIT VALUES
     const initialValues = {
         origin: null,
@@ -76,17 +90,21 @@ const QuoteCreate = (quote) => {
     return (
 
         <TableContainer component={Paper} className={classes.tableFrame}>
-            <div className="quote_list-header">
-                <FastForwardIcon className="quote_create-header-icon" fontSize="large"/>
-                <h1 className="quote_create-header-text">Quick Quote</h1>
+            <div className="quote_create-header">
+                <div className="quote_create-header-left ">
+                    <FastForwardIcon className="quote_create-header-icon" fontSize="large"/>
+                    <h1 className="quote_create-header-text">Quick Quote</h1>
+                </div>
+                <div>
                 <IconButton className="quote_create-header-btn" onClick={() => console.log("button pressed")}>
-                    <OpenWith fontSize="large"/>
-                </IconButton>             
+                    <SettingsOverscan className="quote_create-header-icon" fontSize="large"/>
+                </IconButton> 
+                </div>            
             </div>
             <div>
                         <Formik
                     initialValues={initialValues}
-                    // validationSchema={FormDataStep2}
+                    validationSchema={createQuoteValidator}
                     onSubmit={(values) => {
                         handleSubmit(values)
                         console.log("My values", values);

@@ -12,15 +12,23 @@
 }
 
 .home-left_text {
-  width: 30%;
+  width: 40%;
   display: flex;
   flex-direction: column;
   color: white;
   padding: 2rem;
 }
 
+.home-left_text h1 {
+  font-size: 35px;
+}
+
+.home-left_text p {
+  font-size: 17px;
+}
+
 .home-right_text {
-  width: 60%;
+  width: 55%;
   display: flex;
   flex-direction: column;
   color: white;

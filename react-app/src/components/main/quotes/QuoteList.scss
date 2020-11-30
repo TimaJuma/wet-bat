@@ -11,3 +11,8 @@
   padding: 1rem;
   border-bottom: 3px solid $wb-grey;
 }
+
+.quote_list-body {
+  height: 300px;
+  overflow: auto;
+}
