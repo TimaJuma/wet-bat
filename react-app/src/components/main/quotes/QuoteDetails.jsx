@@ -1,19 +1,20 @@
-import React, {useLayoutEffect, useState} from 'react';
+import React, {useState, useEffect, useLayoutEffect} from 'react';
+
 import {Form, Formik} from "formik"
-import QuoteSendBtn from "./quoteitems/QuoteSendBtn"
-import FastForwardIcon from "@material-ui/icons/FastForward"
-import IconButton from "@material-ui/core/IconButton"
-import OpenWith from "@material-ui/icons/OpenWith"
 import QuoteFormikField from "./quoteitems/QuoteFormikField"
 import QuoteFormikSelect from "./quoteitems/QuoteFormikSelect"
-import "./QuoteCreate.scss"
+import QuoteSendBtn from "./quoteitems/QuoteSendBtn"
 
-import axios from "axios"
-
-import {Paper, Table, TableBody,  TableContainer} from "@material-ui/core"
+import {Paper, TableContainer} from "@material-ui/core"
+import ReplayIcon from "@material-ui/icons/Replay"
+import IconButton from "@material-ui/core/IconButton"
+import OpenWith from "@material-ui/icons/OpenWith"
 import { makeStyles, createStyles } from "@material-ui/core/styles";
 
-// import "./QuoteList.scss"
+import axios from "axios"
+import "./QuoteList.scss"
+
+
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -24,68 +25,65 @@ const useStyles = makeStyles((theme) =>
         minWidth : "400px",
       borderRadius: "12px",
     },
-    iconStyle: {
-        height: "20px"
-    }
   })
 );
 
 
-
-const QuoteCreate = (quote) => {
+const QuoteDetails = ({quoteData, quote, setSelectedQuoteId, setUpdateQuotes}) => {
     const classes = useStyles();
-    const [quoteData, setQuoteData] = useState({});
-    const [error, SetError] = useState({})
 
-    useLayoutEffect(()=> {
-        async function FetchQuotes() {
-            try{
-                const result = await axios.get('api/quotedata');
-                setQuoteData({...result.data})
-                // console.log("quoteData", result.data)
-            }catch (err){
-                SetError({...err})
-            }
-
-        }
-
-        FetchQuotes()
-    }, [])
+    // const [selectedQuote, setSelectedQuote] = useState({})
 
     const handleSubmit = (values) => {
-        axios.post("/api/quote", values).then((res) => {
+        axios.put(`/api/quote/${quote.id}`, values).then((res) => {
           console.log("response recieved");
+          setUpdateQuotes(prev => prev +1 )
+          setSelectedQuoteId(null)
         });
       };
 
     // INIT VALUES
+    const dt = new Date();
+    const currentDate =
+    dt.getFullYear() +
+    "-" +
+    ("0" + (dt.getMonth() + 1)).slice(-2) +
+    "-" +
+    ("0" + dt.getDate()).slice(-2);
+
+
     const initialValues = {
-        origin: null,
-        destination: null,
-        depart_date: "",
-        return_date: "",
-        first_name: "",
-        last_name: "",
-        email: "",
-        phone: "",
-        transport_id: null,
-        price: null,
+        id : quote.id,
+        origin: quote.origin_id,
+        destination: quote.dest_id,
+        depart_date: currentDate,
+        return_date: currentDate,
+        passenger_id : quote.passenger_id,
+        first_name: quote.first_name,
+        last_name: quote.last_name,
+        email: quote.email,
+        phone: quote.phone,
+        transport_id: quote.transport_id,
+        price: quote.price/100,
         currency_id : 1
     }
 
-    return (
 
-        <TableContainer component={Paper} className={classes.tableFrame}>
-            <div className="quote_list-header">
-                <FastForwardIcon className="quote_create-header-icon" fontSize="large"/>
-                <h1 className="quote_create-header-text">Quick Quote</h1>
-                <IconButton className="quote_create-header-btn" onClick={() => console.log("button pressed")}>
-                    <OpenWith fontSize="large"/>
-                </IconButton>             
-            </div>
+    const headerText= "Quote Details"
+    return (
+        <div>
+            <TableContainer component={Paper} className={classes.tableFrame}>
+                <div className="quote_list-header">
+                    <ReplayIcon className="quote_create-header-icon" fontSize="large"/>
+                    <h1 className="quote_create-header-text">{headerText}</h1>
+                    <IconButton className="quote_create-header-btn" onClick={() => console.log("button pressed")}>
+                        <OpenWith fontSize="large"/>
+                    </IconButton>   
+                </div>
             <div>
                         <Formik
                     initialValues={initialValues}
+                    enableReinitialize={true}
                     // validationSchema={FormDataStep2}
                     onSubmit={(values) => {
                         handleSubmit(values)
@@ -114,30 +112,19 @@ const QuoteCreate = (quote) => {
                                         <QuoteFormikField name="price" label="PRICE" type="number" />
                                         <QuoteFormikSelect name="currency_id" label="CURRENCY" ranges={quoteData.currencyData}/>
                                     </div>
-                                        <QuoteSendBtn text="CREATE"/>
+                                        <QuoteSendBtn text="EDIT"/>
                                     
                                 </div>
-                                {/* <pre>{JSON.stringify(values, null, 2)}</pre> */}
+                                <pre>{JSON.stringify(values, null, 2)}</pre>
                             </Form>
                     )}
 
                 </Formik>
             </div>
-      </TableContainer>
-
-
-
-
-
-        // <div className="quote_create-container">
-
-
-
-
-
-        
-        // </div>
+            {/* </Table> */}
+        </TableContainer>
+        </div>
     );
 };
 
-export default QuoteCreate;
+export default QuoteDetails;

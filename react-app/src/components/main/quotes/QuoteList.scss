@@ -1,0 +1,13 @@
+@import "../../../../public/styles/variables.scss";
+
+.quote_list-container {
+  border-radius: 12px;
+}
+
+.quote_list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 3px solid $wb-grey;
+}

@@ -4,57 +4,55 @@ import OutlinedInput from "@material-ui/core/OutlinedInput"
 import InputAdornment from "@material-ui/core/InputAdornment"
 
 import ChatBubbleIcon from "@material-ui/icons/ChatBubble"
+import FlightTakeOffIcon from "@material-ui/icons/FlightTakeoff"
 import NotificationsIcon from "@material-ui/icons/Notifications"
 import SearchIcon from "@material-ui/icons/Search"
 import SettingIcon from "@material-ui/icons/Settings"
 import ViewCompactIcon from "@material-ui/icons/ViewCompact"
-// import axios from "axios";
 
-// import { Link } from "react-router-dom";
+import { makeStyles, createStyles } from "@material-ui/core/styles";
+
 import "./Navbar.scss";
-// import LoginModal from "./Login";
-// import Logout from "./Logout";
 
 
+const useStyles = makeStyles((theme) =>
+  createStyles({
+    searchIcon: {
+      borderRadius: "12px",
+      background: "white",
+      height: "45px",
+      width: "400px",
+      color: "#c1c1c1"
+    },
+  })
+);
+  
 
 
 const Navbar = () => {
+  const classes = useStyles();
 
-//   useEffect(() => {
-//     axios.get("/users/me").then((res) => {
-//       let name = "";
-//       if (res.data.user) {
-//         if (res.data.user.first_name) name = res.data.user.first_name;
-//         else name = res.data.user.name;
-//       }
-//       setUserI(name);
-//       setLogStatus(true);
-//     });
-//   }, []);
   return (
     <nav className="nav">
-      {/* <div>
-        <Link className="navigation-logo" to="/">
-        </Link>
-      </div>
-      <Link to="/signup"></Link> */}
-      <div>
-      <ViewCompactIcon fontSize="large"/>
+      <div className="nav-left-items">
+        <ViewCompactIcon fontSize="large"/>
+        <FlightTakeOffIcon fontSize="large"/>
       </div>
       <div className="nav-right_items">
         <OutlinedInput
               id="outlined-adornment-weight"
+              className={classes.searchIcon}
               // value={values.weight}
               // onChange={handleChange('weight')}
-              startAdornment={<InputAdornment position="start"><SearchIcon/></InputAdornment>}
+              startAdornment={<InputAdornment position="start"><SearchIcon fontSize="large"/></InputAdornment>}
               aria-describedby="outlined-weight-helper-text"
               inputProps={{
                 'aria-label': 'weight',
               }}
               labelWidth={0}
             />
-        <NotificationsIcon color="primary" />
-        <ChatBubbleIcon className="nav-icon"/>
+        <NotificationsIcon />
+        <ChatBubbleIcon />
         <SettingIcon/>
         <img src="https://avatarmaker.net/images/1.png" alt="avatar1" className="nav-avatar"/>
       </div>
