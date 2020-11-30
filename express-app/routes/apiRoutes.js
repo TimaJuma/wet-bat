@@ -1,15 +1,22 @@
 const { registerConfirm } = require("../middlewares/sendEmail");
 
+const { validate, validateFormData } = require("../middlewares/formValidation");
+
 module.exports = (router, db) => {
-  router.get("/quotes", async (req, res) => {
-    try {
-      const quotes = await db.getAllQuotes();
-      // console.log("sth", quotes);
-      res.send(quotes);
-    } catch (err) {
-      res.status(500).send({ error: `${err.message}` });
+  router.get(
+    "/quotes",
+    validate,
+    validateFormData("create"),
+    async (req, res) => {
+      try {
+        const quotes = await db.getAllQuotes();
+        // console.log("sth", quotes);
+        res.send(quotes);
+      } catch (err) {
+        res.status(500).send({ error: `${err.message}` });
+      }
     }
-  });
+  );
 
   router.get("/quotedata", async (req, res) => {
     try {

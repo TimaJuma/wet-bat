@@ -1,12 +1,12 @@
-const { body, validationResult } = require("express-validator/check");
+const { body, validationResult } = require("express-validator");
 
-const validateStepData = (method) => {
+const validateFormData = (method) => {
   switch (method) {
     case "create": {
       return [
         body("first_name", "First name should exist").exists(),
         body("last_name", "Last name should exist").exists(),
-        body("phone", "Phone name should exist").exists().isMobilePhone(),
+        body("phone", "Phone name should exist").exists(),
         body("email", "Email name should exist").exists().isEmail(),
       ];
     }
@@ -26,6 +26,6 @@ const validate = (req, res, next) => {
 };
 
 module.exports = {
-  validateStepData,
+  validateFormData,
   validate,
 };
