@@ -14,10 +14,6 @@ const QuoteFormikField =
               type={type}
               name={name}
               label={label}
-              
-            //   select
-            //   variant="standard"
-            //   helperText="Please select"
               margin="normal"
               InputLabelProps={{
                 shrink: true,

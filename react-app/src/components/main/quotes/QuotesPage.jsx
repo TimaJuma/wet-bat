@@ -43,7 +43,6 @@ const QuotesPage = () => {
 
     const [selectedQuote, setSelectedQuote] = useState({})
     useEffect(()=> {
-        // console.log("quote details quoteID", selectedQuoteId)
         const [selected] =  quotes.filter(quote => quote.id === selectedQuoteId);
         console.log("quote details quoteItself", selected)
         setSelectedQuote({...selected})
@@ -54,7 +53,6 @@ const QuotesPage = () => {
             <div>
                 <QuoteCreate setUpdateQuotes={setUpdateQuotes}/>
                 <QuoteList quotes={quotes} setSelectedQuoteId={setSelectedQuoteId}/>
-                {/* <pre>{JSON.stringify(selectedQuote, null, 2)}</pre> */}
                 {selectedQuoteId ? <QuoteDetails  
                 quoteData={quoteData} 
                 selectedQuoteId={selectedQuoteId} 
@@ -62,8 +60,6 @@ const QuotesPage = () => {
                 setSelectedQuoteId={setSelectedQuoteId} 
                 setUpdateQuotes={setUpdateQuotes}/> : null}
             </div>
-            {/* <p>{JSON.stringify(error, null, 2)}</p>
-            <pre>{JSON.stringify(quotes, null, 2)}</pre> */}
         </>
     );
 };
