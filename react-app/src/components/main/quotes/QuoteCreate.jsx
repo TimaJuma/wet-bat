@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) =>
 
 
 
-const QuoteCreate = (quote) => {
+const QuoteCreate = ({setUpdateQuotes}) => {
     const classes = useStyles();
     const [quoteData, setQuoteData] = useState({});
     const [error, SetError] = useState({})
@@ -54,6 +54,7 @@ const QuoteCreate = (quote) => {
 
     const handleSubmit = (values) => {
         axios.post("/api/quote", values).then((res) => {
+        setUpdateQuotes(prev => prev +1 )
           console.log("response recieved");
         });
       };

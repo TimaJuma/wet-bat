@@ -1,3 +1,5 @@
+const { registerConfirm } = require("../middlewares/sendEmail");
+
 module.exports = (router, db) => {
   router.get("/quotes", async (req, res) => {
     try {
@@ -14,7 +16,7 @@ module.exports = (router, db) => {
       const transportsData = await db.getTransportData();
       const citiesData = await db.getCitiesData();
       const currencyData = await db.getCurrencyData();
-      console.log("quoteData", transportsData, currencyData);
+      // console.log("quoteData", transportsData, currencyData);
       // console.log("CityData", citiesData);
       res.send({ transportsData, citiesData, currencyData });
     } catch (err) {
@@ -26,7 +28,7 @@ module.exports = (router, db) => {
     try {
       console.log("res.body", req.body);
       const result = await db.addQuote(req.body);
-      // console.log("result", result);
+      registerConfirm(req, res);
       res.send("OK");
     } catch (err) {
       res.status(500).send({ error: `${err.message}` });

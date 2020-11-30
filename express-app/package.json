@@ -18,6 +18,8 @@
     "express": "^4.17.1",
     "express-pino-logger": "^5.0.0",
     "fs": "0.0.1-security",
+    "mailgen": "^2.0.14",
+    "nodemailer": "^6.4.16",
     "nodemon": "^2.0.6",
     "pg": "^8.5.1",
     "pino-colada": "^2.1.0"

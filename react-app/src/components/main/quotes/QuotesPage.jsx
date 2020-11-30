@@ -54,7 +54,7 @@ const QuotesPage = () => {
     return (
         <>  
             <div>
-                <QuoteCreate/>
+                <QuoteCreate setUpdateQuotes={setUpdateQuotes}/>
                 <QuoteList quotes={quotes} setSelectedQuoteId={setSelectedQuoteId}/>
                 <pre>{JSON.stringify(selectedQuote, null, 2)}</pre>
                 {selectedQuoteId ? <QuoteDetails  
