@@ -1,6 +1,7 @@
 import React, {useLayoutEffect, useState} from 'react';
 import {Form, Formik} from "formik"
 import * as Yup from "yup";
+
 import QuoteSendBtn from "./quoteitems/QuoteSendBtn"
 import FastForwardIcon from "@material-ui/icons/FastForward"
 import IconButton from "@material-ui/core/IconButton"
@@ -45,7 +46,6 @@ const QuoteCreate = ({setUpdateQuotes}) => {
             try{
                 const result = await axios.get('api/quotedata');
                 setQuoteData({...result.data})
-                // console.log("quoteData", result.data)
             }catch (err){
                 SetError({...err})
             }
@@ -135,26 +135,12 @@ const QuoteCreate = ({setUpdateQuotes}) => {
                                         <QuoteSendBtn text="CREATE"/>
                                     
                                 </div>
-                                {/* <pre>{JSON.stringify(values, null, 2)}</pre> */}
                             </Form>
                     )}
 
                 </Formik>
             </div>
       </TableContainer>
-
-
-
-
-
-        // <div className="quote_create-container">
-
-
-
-
-
-        
-        // </div>
     );
 };
 

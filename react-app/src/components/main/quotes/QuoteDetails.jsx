@@ -34,8 +34,6 @@ const useStyles = makeStyles((theme) =>
 const QuoteDetails = ({quoteData, quote, setSelectedQuoteId, setUpdateQuotes}) => {
     const classes = useStyles();
 
-    // const [selectedQuote, setSelectedQuote] = useState({})
-
     const handleSubmit = (values) => {
         axios.put(`/api/quote/${quote.id}`, values).then((res) => {
           console.log("response recieved");
@@ -88,7 +86,6 @@ const QuoteDetails = ({quoteData, quote, setSelectedQuoteId, setUpdateQuotes}) =
                         <Formik
                     initialValues={initialValues}
                     enableReinitialize={true}
-                    // validationSchema={FormDataStep2}
                     onSubmit={(values) => {
                         handleSubmit(values)
                         console.log("My values", values);
@@ -119,13 +116,11 @@ const QuoteDetails = ({quoteData, quote, setSelectedQuoteId, setUpdateQuotes}) =
                                         <QuoteSendBtn text="EDIT"/>
                                     
                                 </div>
-                                {/* <pre>{JSON.stringify(values, null, 2)}</pre> */}
                             </Form>
                     )}
 
                 </Formik>
             </div>
-            {/* </Table> */}
         </TableContainer>
         </div>
     );

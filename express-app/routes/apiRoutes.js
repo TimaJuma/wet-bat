@@ -10,7 +10,6 @@ module.exports = (router, db) => {
     async (req, res) => {
       try {
         const quotes = await db.getAllQuotes();
-        // console.log("sth", quotes);
         res.send(quotes);
       } catch (err) {
         res.status(500).send({ error: `${err.message}` });
@@ -23,8 +22,6 @@ module.exports = (router, db) => {
       const transportsData = await db.getTransportData();
       const citiesData = await db.getCitiesData();
       const currencyData = await db.getCurrencyData();
-      // console.log("quoteData", transportsData, currencyData);
-      // console.log("CityData", citiesData);
       res.send({ transportsData, citiesData, currencyData });
     } catch (err) {
       res.status(500).send({ error: `${err.message}` });
@@ -46,7 +43,6 @@ module.exports = (router, db) => {
     try {
       console.log("res.id", req.params.id, req.body);
       const result = await db.updateQuote(req.body);
-      // console.log("result", result);
       res.send("OK");
     } catch (err) {
       res.status(500).send({ error: `${err.message}` });
