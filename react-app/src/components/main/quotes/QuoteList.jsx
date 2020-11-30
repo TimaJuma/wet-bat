@@ -12,6 +12,7 @@ const useStyles = makeStyles((theme) =>
   createStyles({
     tableContainer: {
       borderRadius: "12px",
+      margin: "10px",
       padding : "20px"
     },
   })

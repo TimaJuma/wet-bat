@@ -33,5 +33,16 @@ module.exports = (router, db) => {
     }
   });
 
+  router.put("/quote/:id", async (req, res) => {
+    try {
+      console.log("res.id", req.params.id, req.body);
+      const result = await db.updateQuote(req.body);
+      // console.log("result", result);
+      res.send("OK");
+    } catch (err) {
+      res.status(500).send({ error: `${err.message}` });
+    }
+  });
+
   return router;
 };

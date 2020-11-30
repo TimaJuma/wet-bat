@@ -7,6 +7,7 @@ const useStyle = makeStyles(theme => ({
     margin: "auto",
     padding: "auto",
     height: "40px",
+    width: "150px",
     color: "white",
     fontWeight: "bold",
     background : "#5bbfba",
@@ -16,11 +17,11 @@ const useStyle = makeStyles(theme => ({
 
 
 
-const CreateQuote = ({onClick}) => {
+const CreateQuote = ({onClick, text}) => {
     const classes = useStyle();
     return (
         <>
-            <Button className={classes.button} type="submit" variant="contained" endIcon={<SendIcon/>} onClick={onClick}>Create a Quote</Button>
+            <Button className={classes.button} type="submit" variant="contained" endIcon={<SendIcon/>} onClick={onClick}>{text}</Button>
         </>
     );
 }

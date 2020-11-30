@@ -10,8 +10,7 @@ import "./QuoteCreate.scss"
 
 import axios from "axios"
 
-import {Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow} from "@material-ui/core"
-import ReplayIcon from "@material-ui/icons/Replay"
+import {Paper, Table, TableBody,  TableContainer} from "@material-ui/core"
 import { makeStyles, createStyles } from "@material-ui/core/styles";
 
 // import "./QuoteList.scss"
@@ -19,7 +18,7 @@ import { makeStyles, createStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles((theme) =>
   createStyles({
     tableFrame: {
-        marginTop: "10px",
+        margin: "10px",
         padding : "20px",
         width: "100%",
         minWidth : "400px",
@@ -78,20 +77,12 @@ const QuoteCreate = (quote) => {
 
         <TableContainer component={Paper} className={classes.tableFrame}>
             <div className="quote_list-header">
-                {/* <ReplayIcon className="quote_create-header-icon" fontSize="large"/>
-                <h1 className="quote_create-header-text">QUICK QUOTE</h1>
-                <IconButton className="quote_create-header-btn" onClick={() => console.log("button pressed")}>
-                    <OpenWith fontSize="large"/>
-                </IconButton>    */}
-                {/* <div className="quote_create-header"> */}
                 <FastForwardIcon className="quote_create-header-icon" fontSize="large"/>
                 <h1 className="quote_create-header-text">Quick Quote</h1>
                 <IconButton className="quote_create-header-btn" onClick={() => console.log("button pressed")}>
                     <OpenWith fontSize="large"/>
                 </IconButton>             
-            {/* </div> */}
             </div>
-            {/* <Table className="placeholder"> */}
             <div>
                         <Formik
                     initialValues={initialValues}
@@ -123,7 +114,7 @@ const QuoteCreate = (quote) => {
                                         <QuoteFormikField name="price" label="PRICE" type="number" />
                                         <QuoteFormikSelect name="currency_id" label="CURRENCY" ranges={quoteData.currencyData}/>
                                     </div>
-                                        <QuoteSendBtn />
+                                        <QuoteSendBtn text="CREATE"/>
                                     
                                 </div>
                                 {/* <pre>{JSON.stringify(values, null, 2)}</pre> */}
@@ -131,7 +122,6 @@ const QuoteCreate = (quote) => {
                     )}
 
                 </Formik>
-            {/* </Table> */}
             </div>
       </TableContainer>
 
