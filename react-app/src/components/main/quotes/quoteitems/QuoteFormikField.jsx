@@ -1,33 +1,31 @@
 import React from "react";
 import { Field } from "formik";
-import  {TextField} from "@material-ui/core";
-import MenuItem from "@material-ui/core/MenuItem"
+import  {TextField} from "formik-material-ui";
+
+import "../QuoteCreate.scss"
 
 const QuoteFormikField =
-  ({ name, label, type = "text", disabled = false, ranges}) => {
+  ({ name, label, type = "text", disabled = false}) => {
     return (
-      <div className="FormikSelect">
+      <>
         <Field
               component={TextField}
+              className="quote_create-field"
               type={type}
               name={name}
               label={label}
-              select
-              variant="standard"
+              
+            //   select
+            //   variant="standard"
             //   helperText="Please select"
               margin="normal"
               InputLabelProps={{
                 shrink: true,
+                
               }}
             >
-              {/* {ranges.map((option) => (
-                <MenuItem key={option.id} value={option.id}>
-                  {option.first_name && `${option.first_name} ${option.last_name}`}
-                  {option.city && `(${option.code}) ${option.city}`}
-                </MenuItem>
-              ))} */}
             </Field>
-      </div>
+      </>
     );
   };
 

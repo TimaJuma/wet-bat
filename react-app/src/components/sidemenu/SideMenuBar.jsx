@@ -57,7 +57,7 @@ const SideMenuBar = () => {
   );
 };
 
-const drawerWidth = 250;
+const drawerWidth = 200;
 
 const useStyles = makeStyles((theme) => ({
   root: {

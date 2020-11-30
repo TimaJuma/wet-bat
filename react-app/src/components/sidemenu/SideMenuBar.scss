@@ -16,7 +16,10 @@
 .main-content {
   flex-grow: 1;
   height: "100vh";
+  width: "100%";
   overflow: "auto";
+  margin: 0;
+  background: $wb-background;
 }
 
 .sidebar-drawer {

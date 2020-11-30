@@ -1,0 +1,8 @@
+###
+POST http://localhost:7000/api/quote
+Content-Type: application/json
+
+{
+  "userEmail":"tima.xpl@gmail.com",
+  "name":"Marat"
+}
