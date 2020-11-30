@@ -4,8 +4,8 @@
   background-color: white;
   border-radius: 12px;
   height: auto;
-  width: 40%;
-  border: 2px solid $wb-grey;
+  // width: 40%;
+  border: 4px solid $wb-background;
   margin: 1rem;
 }
 
@@ -13,15 +13,23 @@
 .quote_create-header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 1rem;
+  // align-items: center;
+  padding: 0rem;
+  border-bottom: 4px solid $wb-background;
+}
 
-  border-bottom: 1px solid $wb-grey;
+.quote_create-header-left {
+  display: flex;
+}
+
+.quote_create-header-left > * {
+  margin: 0.1rem 1rem;
 }
 
 .quote_create-header-icon {
   color: $wb-blue;
   //   margin: 1rem;
+  padding: 0;
 }
 
 .quote_create-header-text {

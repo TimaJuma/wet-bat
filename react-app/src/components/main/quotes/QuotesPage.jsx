@@ -31,7 +31,6 @@ const QuotesPage = () => {
             try{
                 const result = await axios.get('api/quotedata');
                 setQuoteData({...result.data})
-                // console.log("quoteData", result.data)
             }catch (err){
                 SetError({...err})
             }
@@ -42,10 +41,9 @@ const QuotesPage = () => {
     }, [])
 
 
-    // temp
     const [selectedQuote, setSelectedQuote] = useState({})
     useEffect(()=> {
-        console.log("quote details quoteID", selectedQuoteId)
+        // console.log("quote details quoteID", selectedQuoteId)
         const [selected] =  quotes.filter(quote => quote.id === selectedQuoteId);
         console.log("quote details quoteItself", selected)
         setSelectedQuote({...selected})
@@ -56,7 +54,7 @@ const QuotesPage = () => {
             <div>
                 <QuoteCreate setUpdateQuotes={setUpdateQuotes}/>
                 <QuoteList quotes={quotes} setSelectedQuoteId={setSelectedQuoteId}/>
-                <pre>{JSON.stringify(selectedQuote, null, 2)}</pre>
+                {/* <pre>{JSON.stringify(selectedQuote, null, 2)}</pre> */}
                 {selectedQuoteId ? <QuoteDetails  
                 quoteData={quoteData} 
                 selectedQuoteId={selectedQuoteId} 

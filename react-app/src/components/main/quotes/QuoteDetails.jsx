@@ -8,11 +8,12 @@ import QuoteSendBtn from "./quoteitems/QuoteSendBtn"
 import {Paper, TableContainer} from "@material-ui/core"
 import ReplayIcon from "@material-ui/icons/Replay"
 import IconButton from "@material-ui/core/IconButton"
-import OpenWith from "@material-ui/icons/OpenWith"
+import SettingsOverscan from "@material-ui/icons/SettingsOverscan"
 import { makeStyles, createStyles } from "@material-ui/core/styles";
 
 import axios from "axios"
 import "./QuoteList.scss"
+import "./QuoteCreate.scss"
 
 
 
@@ -21,6 +22,7 @@ const useStyles = makeStyles((theme) =>
     tableFrame: {
         margin: "10px",
         padding : "20px",
+        height: "435px",
         width: "100%",
         minWidth : "400px",
       borderRadius: "12px",
@@ -73,11 +75,13 @@ const QuoteDetails = ({quoteData, quote, setSelectedQuoteId, setUpdateQuotes}) =
     return (
         <div>
             <TableContainer component={Paper} className={classes.tableFrame}>
-                <div className="quote_list-header">
-                    <ReplayIcon className="quote_create-header-icon" fontSize="large"/>
-                    <h1 className="quote_create-header-text">{headerText}</h1>
+                <div className="quote_create-header">
+                    <div className="quote_create-header-left ">
+                        <ReplayIcon className="quote_create-header-icon" fontSize="large"/>
+                        <h1 className="quote_create-header-text">{headerText}</h1>
+                    </div>
                     <IconButton className="quote_create-header-btn" onClick={() => console.log("button pressed")}>
-                        <OpenWith fontSize="large"/>
+                        <SettingsOverscan className="quote_create-header-icon" fontSize="large"/>
                     </IconButton>   
                 </div>
             <div>
@@ -115,7 +119,7 @@ const QuoteDetails = ({quoteData, quote, setSelectedQuoteId, setUpdateQuotes}) =
                                         <QuoteSendBtn text="EDIT"/>
                                     
                                 </div>
-                                <pre>{JSON.stringify(values, null, 2)}</pre>
+                                {/* <pre>{JSON.stringify(values, null, 2)}</pre> */}
                             </Form>
                     )}
 

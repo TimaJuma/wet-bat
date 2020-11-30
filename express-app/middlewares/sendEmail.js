@@ -20,38 +20,6 @@ let MailGenerator = new Mailgen({
   },
 });
 
-// const signup = (req, res) => {
-//   const { email, name } = req.body;
-
-//   // sign up the user .....
-//   console.log("Hi, Now I am", email, name);
-//   // then send the email
-//   let response = {
-//     body: {
-//       name,
-//       intro: "Welcome to Nodemailer! We're very excited to have you on board.",
-//     },
-//   };
-
-//   let mail = MailGenerator.generate(response);
-
-//   let message = {
-//     from: "mister.xpl@yahoo.com",
-//     to: email,
-//     subject: "signup successful",
-//     html: mail,
-//   };
-
-//   transporter
-//     .sendMail(message)
-//     .then(() => {
-//       return res
-//         .status(200)
-//         .json({ msg: "you should receive an email from us" });
-//     })
-//     .catch((error) => console.error(error));
-// };
-
 const registerConfirm = (req, res, next) => {
   const {
     email,
@@ -61,14 +29,7 @@ const registerConfirm = (req, res, next) => {
     price,
     return_date,
   } = req.body;
-  // console.log(
-  //   "Hi, I am EMAIL",
-  //   email,
-  //   depart_date,
-  //   first_name,
-  //   last_name,
-  //   price
-  // );
+
   const response = {
     body: {
       name: `${first_name} ${last_name}`,

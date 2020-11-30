@@ -65,25 +65,12 @@ const useStyles = makeStyles((theme) => ({
   },
   drawerPaper: {
     position: "relative",
-    // display: "flex",
-    // flexDirection: "column",
-    // whiteSpace: "nowrap",
     width: drawerWidth,
     height : "100vh",
-    // paddingTop: theme.spacing(4),
-    // paddingBottom: theme.spacing(4),
-    background: "#e7f0c3",
+    background: "#a4d4ae",
     color: "#5f6caf",
   },
-  // content: {
-  //   flexGrow: 1,
-  //   height: "100vh",
-  //   overflow: "auto",
-  // },
-  // container: {
-  //   paddingTop: theme.spacing(4),
-  //   paddingBottom: theme.spacing(4),
-  // },
+
 }));
 
 export default SideMenuBar;
